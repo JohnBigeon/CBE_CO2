@@ -1,14 +1,14 @@
-# CBE_C02
+# CBE_CO2
 
 <p float="center">
-  <img src="https://github.com/JohnBigeon/CBE_C02/blob/main/Pictures/plot.png" />
+  <img src="https://github.com/JohnBigeon/CBE_CO2/blob/main/Pictures/plot.png" />
 </p>
 
 
 ## Introduction
 Here, we will build/assemble a device to measure environmental parameters such as:
 - temperature, 
-- C02 concentration,
+- CO2 concentration,
 - Volatile Organic Compounds (VOC) cocentration
 - Temperature
 - Humidity
@@ -45,7 +45,7 @@ ESP32        BME280    CCS811    SD card reader
 ![PCB](https://github.com/JohnBigeon/CBE_CO2/blob/main/KiCad_files/pcb.png)
 
 ### First integration
-![Integration](https://github.com/JohnBigeon/CBE_C02/blob/main/Pictures/integration_v01.jpg)
+![Integration](https://github.com/JohnBigeon/CBE_CO2/blob/main/Pictures/integration_v01.jpg)
 
 ### Price
 ```
@@ -125,7 +125,7 @@ network config: ('XXX.XXX.XXX.XX', ...)
 ```
 
 Then, test the connection with the device using your laptop or smartphone:
-![Check_connection](https://github.com/JohnBigeon/CBE_C02/blob/main/Pictures/record.png)
+![Check_connection](https://github.com/JohnBigeon/CBE_CO2/blob/main/Pictures/record.png)
 
 ### Full measurement
 Measurement are saved on the SD card as:
