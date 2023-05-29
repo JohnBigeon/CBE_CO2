@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Chemical and Behavioural Ecology</title>
+<meta http-equiv="Pragma" content="no-cache">
+<script>
+var output;
+function init() {
+output = document.getElementById("output");
+var wsUri = "ws://" + window.location.hostname;
+writeToScreen("Connection to " + wsUri + "...")
+websocket = new WebSocket(wsUri);
+websocket.onopen = function(evt) { onOpen (evt) };
+websocket.onclose = function(evt) { onClose (evt) };
+websocket.onmessage = function(evt) { onMessage (evt) };
+websocket.onerror = function(evt) { onError (evt) };
+}
+function onOpen(evt) {
+writeToScreen("<strong>-- CONNECTED --</strong>");
+SendMsg("Hello world :)");
+}
+function onClose(evt) {
+writeToScreen("<strong>-- DISCONNECTED --</strong>");
+}
+function onMessage(evt) {
+writeToScreen('MSG FROM ESP32 : <span style="color: blue;">' +
+evt.data + '</span>');
+}
+function onError(evt) {
+writeToScreen('ERROR : <span style="color: red;">' +
+evt.data + '</span>');
+}
+function SendMsg(msg) {
+writeToScreen('MSG TO ESP32 : <span style="color: green;">' +
+msg + '</span>');
+websocket.send(msg);
+}
+function writeToScreen(s) {
+var pre = document.createElement("p");
+pre.style.wordWrap = "break-word";
+pre.innerHTML = s;
+output.appendChild(pre);
+}
+window.addEventListener("load", init, false);
+function sayHello() {
+writeToScreen("HELLO");
+websocket.send("HELLO from button");
+}
+function LEDon() {
+writeToScreen("LED on");
+websocket.send("LEDon");
+}
+function LEDoff() {
+writeToScreen("LED off");
+websocket.send("LEDoff");
+}
+function Get() {
+writeToScreen("Get");
+websocket.send("Get");
+}
+function closeconnection() {
+writeToScreen("Closing ...");
+websocket.close();
+}
+</script>
+</head>
+<body>
+<h2>Chemical and Behavioural Ecology</h2>
+<button type="button" onClick = "sayHello()">Say HELLO</button>
+<button type="button" onClick = "LEDon()">LED ON</button>
+<button type="button" onClick = "LEDoff()">LED OFF</button>
+<button type="button" onClick = "Get()">Get</button>
+<button type="button" onClick ="closeconnection()">Close connection</button>
+<div id="output"></div>
+</body>
+</html>
